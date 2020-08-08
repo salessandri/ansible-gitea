@@ -32,4 +32,3 @@
         RUN_MODE: 'prod'
         SSH_DOMAIN: '{{ gitea__hostname }}'
         ROOT_URL: '{{ gitea__root_url }}'
-
