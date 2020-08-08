@@ -1,0 +1,26 @@
+galaxy_info:
+  role_name: gitea
+  author: Santiago Alessandri
+  description: Gitea server setup using the docker container
+
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Archlinux
+      versions:
+        - all
+
+  galaxy_tags:
+    - development
+    - git
+    - gitea
+    - gitserver
+    - docker
