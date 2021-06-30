@@ -7,4 +7,4 @@ gitea__web_host: 127.0.0.1
 gitea__web_port: 3000
 gitea__hostname: localhost
 gitea__root_url: 'http://localhost:3000/'
-gitea__enable_lfs: no
+gitea__enable_lfs: false

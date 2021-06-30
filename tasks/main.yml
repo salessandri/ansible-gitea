@@ -1,34 +1,36 @@
 ---
-  - name: 'Create data folder for Gitea'
-    file:
-      path: '{{ gitea__data_dir }}'
-      state: directory
+- name: 'Create data folder for Gitea'
+  file:
+    path: '{{ gitea__data_dir }}'
+    state: directory
+    owner: root
+    mode: '755'
 
-  - name: 'Setup Gitea docker container'
-    docker_container:
-      image: gitea/gitea:{{ gitea__version }}
-      name: '{{ gitea__container_name }}'
-      state: started
-      restart_policy: unless-stopped
-      networks_cli_compatible: yes
-      mounts:
-        - source: '{{ gitea__data_dir }}'
-          target: /data
-          type: bind
-          read_only: no
-        - source: /etc/timezone
-          target: /etc/timezone
-          type: bind
-          read_only: yes
-        - source: /etc/localtime
-          target: /etc/localtime
-          type: bind
-          read_only: yes
-      published_ports:
-        - "{{ gitea__ssh_port }}:22/tcp"
-        - "{{ gitea__web_host }}:{{ gitea__web_port }}:3000/tcp"
-      env:
-        APP_NAME: '{{ gitea__app_name | default(omit) }}'
-        RUN_MODE: 'prod'
-        SSH_DOMAIN: '{{ gitea__hostname }}'
-        ROOT_URL: '{{ gitea__root_url }}'
+- name: 'Setup Gitea docker container'
+  docker_container:
+    image: gitea/gitea:{{ gitea__version }}
+    name: '{{ gitea__container_name }}'
+    state: started
+    restart_policy: unless-stopped
+    networks_cli_compatible: true
+    mounts:
+      - source: '{{ gitea__data_dir }}'
+        target: /data
+        type: bind
+        read_only: false
+      - source: /etc/timezone
+        target: /etc/timezone
+        type: bind
+        read_only: true
+      - source: /etc/localtime
+        target: /etc/localtime
+        type: bind
+        read_only: true
+    published_ports:
+      - "{{ gitea__ssh_port }}:22/tcp"
+      - "{{ gitea__web_host }}:{{ gitea__web_port }}:3000/tcp"
+    env:
+      APP_NAME: '{{ gitea__app_name | default(omit) }}'
+      RUN_MODE: 'prod'
+      SSH_DOMAIN: '{{ gitea__hostname }}'
+      ROOT_URL: '{{ gitea__root_url }}'
