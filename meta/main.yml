@@ -1,4 +1,5 @@
 galaxy_info:
+  namespace: salessandri
   role_name: gitea
   author: Santiago Alessandri
   description: Gitea server setup using the docker container
