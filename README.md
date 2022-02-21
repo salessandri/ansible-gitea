@@ -18,7 +18,7 @@ Also, gitea provides a web interface so access to it should be provided. It is r
 
 ## Role Variables
 
- - **`gitea__version`** (optional, default: _1.15.7_): Image version tag to use.
+ - **`gitea__version`** (optional, default: _1.16.1_): Image version tag to use.
  - **`gitea__container_name`** (optional, default: _gitea-server_): Name to use for the container created by the role.
  - **`gitea__data_dir`** (optional, default _/var/gitea/_): Folder to use for storing the persistent files.
  - **`gitea__ssh_port`** (optional, default: _2222_): Port where the container will publish the gitea's SSH port.
