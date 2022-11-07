@@ -1,5 +1,5 @@
 ---
-gitea__version: 1.17.1
+gitea__version: 1.17.3
 gitea__container_name: gitea-server
 gitea__data_dir: /var/gitea/
 gitea__ssh_port: 2222
