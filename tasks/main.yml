@@ -1,13 +1,13 @@
 ---
 - name: 'Create data folder for Gitea'
-  file:
+  ansible.builtin.file:
     path: '{{ gitea__data_dir }}'
     state: directory
     owner: root
     mode: '755'
 
 - name: 'Setup Gitea docker container'
-  docker_container:
+  community.docker.docker_container:
     image: gitea/gitea:{{ gitea__version }}
     name: '{{ gitea__container_name }}'
     state: started
