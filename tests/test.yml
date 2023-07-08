@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: 'Install Gitea Role'
+  hosts: localhost
   remote_user: root
   roles:
-    - ansible-gitea
+    - salessandri.gitea
